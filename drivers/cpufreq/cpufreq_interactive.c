@@ -940,6 +940,7 @@ static ssize_t show_target_loads(
 	struct kobject *kobj, struct attribute *attr, char *buf)
 {
 	int i;
+	int sp;
 	ssize_t ret = 0;
 	unsigned long flags;
 
@@ -954,7 +955,8 @@ static ssize_t show_target_loads(
 			       i & 0x1 ? ":" : " ");
 #endif
 
-	ret += sprintf(buf + --ret, "\n");
+	sp = sprintf(buf + --ret, "\n");
+	ret += sp;
 	spin_unlock_irqrestore(&target_loads_lock, flags);
 	return ret;
 }
@@ -1007,6 +1009,7 @@ static ssize_t show_above_hispeed_delay(
 	struct kobject *kobj, struct attribute *attr, char *buf)
 {
 	int i;
+	int sp;
 	ssize_t ret = 0;
 	unsigned long flags;
 
@@ -1022,7 +1025,8 @@ static ssize_t show_above_hispeed_delay(
 			       i & 0x1 ? ":" : " ");
 #endif
 
-	ret += sprintf(buf + --ret, "\n");
+	sp = sprintf(buf + --ret, "\n");
+	ret += sp;
 	spin_unlock_irqrestore(&above_hispeed_delay_lock, flags);
 	return ret;
 }
@@ -1430,6 +1434,7 @@ static ssize_t show_cpu_util(
 	struct kobject *kobj, struct attribute *attr, char *buf)
 {
 	int i;
+	int sp;
 	u64 now;
 	struct cpufreq_interactive_cpuinfo *pcpu;
 	ssize_t ret = 0;
@@ -1447,7 +1452,8 @@ static ssize_t show_cpu_util(
 			ret += sprintf(buf + ret, "OFF ");
 	}
 
-	ret += sprintf(buf + --ret, "\n");
+	sp = sprintf(buf + --ret, "\n");
+	ret += sp;
 	return ret;
 }
 

@@ -61,7 +61,7 @@ static struct file_system_type bm_fs_type;
 static struct vfsmount *bm_mnt;
 static int entry_count;
 
-/* 
+/*
  * Check if we support the binfmt
  * if we do, return the node, else NULL
  * locking is done in load_misc_binary
@@ -411,6 +411,7 @@ Einval:
 static int parse_command(const char __user *buffer, size_t count)
 {
 	char s[4];
+	memset(s, 0, 4);
 
 	if (!count)
 		return 0;
